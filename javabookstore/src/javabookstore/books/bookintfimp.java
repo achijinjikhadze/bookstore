@@ -10,19 +10,19 @@ public class bookintfimp implements bookintf {
 
     public void insertBook(Book book) {
         String sql = "INSERT INTO books (title, authorid, publicationdate, price, getprice, categoryid, quantity, descript) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement st = con.prepareStatement(sql)) {
 
-            stmt.setString(1, book.getTitle());
-            stmt.setInt(2, book.getAuthorId());
-            stmt.setDate(3, new java.sql.Date(book.getPublicationDate().getTime()));
-            stmt.setDouble(4, book.getPrice());
-            stmt.setDouble(5, book.getGetPrice());
-            stmt.setInt(6, book.getCategoryId());
-            stmt.setInt(7, book.getQuantity());
-            stmt.setString(8, book.getDescription());
+            st.setString(1, book.getTitle());
+            st.setInt(2, book.getAuthorId());
+            st.setDate(3, new java.sql.Date(book.getPublicationDate().getTime()));
+            st.setDouble(4, book.getPrice());
+            st.setDouble(5, book.getGetPrice());
+            st.setInt(6, book.getCategoryId());
+            st.setInt(7, book.getQuantity());
+            st.setString(8, book.getDescription());
 
-            stmt.executeUpdate();
+            st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -33,20 +33,20 @@ public class bookintfimp implements bookintf {
     
     public void updateBook(Book book) {
         String sql = "UPDATE books SET title=?, authorid=?, publicationdate=?, price=?, getprice=?, categoryid=?, quantity=?, descript=? WHERE bookid=?";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement st = con.prepareStatement(sql)) {
 
-            stmt.setString(1, book.getTitle());
-            stmt.setInt(2, book.getAuthorId());
-            stmt.setDate(3, new java.sql.Date(book.getPublicationDate().getTime()));
-            stmt.setDouble(4, book.getPrice());
-            stmt.setDouble(5, book.getGetPrice());
-            stmt.setInt(6, book.getCategoryId());
-            stmt.setInt(7, book.getQuantity());
-            stmt.setString(8, book.getDescription());
-            stmt.setInt(9, book.getBookId());
+            st.setString(1, book.getTitle());
+            st.setInt(2, book.getAuthorId());
+            st.setDate(3, new java.sql.Date(book.getPublicationDate().getTime()));
+            st.setDouble(4, book.getPrice());
+            st.setDouble(5, book.getGetPrice());
+            st.setInt(6, book.getCategoryId());
+            st.setInt(7, book.getQuantity());
+            st.setString(8, book.getDescription());
+            st.setInt(9, book.getBookId());
 
-            stmt.executeUpdate();
+            st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,11 +55,11 @@ public class bookintfimp implements bookintf {
   
     public void deleteBook(int id) {
         String sql = "DELETE FROM books WHERE bookid = ?";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement st = con.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
+            st.setInt(1, id);
+            st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,8 +71,8 @@ public class bookintfimp implements bookintf {
                      "JOIN authors a ON b.authorid = a.authorid " +
                      "JOIN categories c ON b.categoryid = c.categoryid";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             Statement stmt = conn.createStatement();
+        try (Connection con = DatabaseConnection.getConnection();
+             Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             System.out.println("ID | Title | Author | Category | Price");

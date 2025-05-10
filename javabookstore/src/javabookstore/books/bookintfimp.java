@@ -9,7 +9,7 @@ import java.util.List;
 public class bookintfimp implements bookintf {
 
     public void insertBook(Book book) {
-        String sql = "INSERT INTO books (title, authorid, publicationdate, price, getprice, categoryid, quantity, descript) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into books (title, authorid, publicationdate, price, getprice, categoryid, quantity, descript) values (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = DatabaseConnection.getConnection();
              PreparedStatement st = con.prepareStatement(sql)) {
 
@@ -32,7 +32,7 @@ public class bookintfimp implements bookintf {
 
     
     public void updateBook(Book book) {
-        String sql = "UPDATE books SET title=?, authorid=?, publicationdate=?, price=?, getprice=?, categoryid=?, quantity=?, descript=? WHERE bookid=?";
+        String sql = "update books set title=?, authorid=?, publicationdate=?, price=?, getprice=?, categoryid=?, quantity=?, descript=? where bookid=?";
         try (Connection con = DatabaseConnection.getConnection();
              PreparedStatement st = con.prepareStatement(sql)) {
 
@@ -54,7 +54,7 @@ public class bookintfimp implements bookintf {
 
   
     public void deleteBook(int id) {
-        String sql = "DELETE FROM books WHERE bookid = ?";
+        String sql = "delete from books where bookid = ?";
         try (Connection con = DatabaseConnection.getConnection();
              PreparedStatement st = con.prepareStatement(sql)) {
 
@@ -66,14 +66,14 @@ public class bookintfimp implements bookintf {
     }
     
     public void printAllBooks() {
-        String sql = "SELECT b.bookid, b.title, a.firstname + ' ' + a.lastname AS author, c.categoryname, b.price " +
+        String sql = "select b.bookid, b.title, a.firstname + ' ' + a.lastname AS author, c.categoryname, b.price " +
                      "FROM books b " +
                      "JOIN authors a ON b.authorid = a.authorid " +
                      "JOIN categories c ON b.categoryid = c.categoryid";
 
         try (Connection con = DatabaseConnection.getConnection();
-             Statement stmt = con.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
 
             System.out.println("ID | Title | Author | Category | Price");
             System.out.println("------------------------------------------");

@@ -2,6 +2,7 @@ package javabookstore;
 
 import javabookstore.books.*;
 import javabookstore.authors.*;
+import javabookstore.categories.*;
 
 import java.util.Date;
 import java.util.List;
@@ -10,13 +11,13 @@ public class Main {
     public static void main(String[] args) {
         bookintf booki = new bookintfimp();
         authorintf at = new authorsintfimp();
-
+        categoryintf categ=new categoryintfimp();
         // insert
       Book bk1 = new Book("axali wigni", 1, new Date(), 24.99, 19.99, 2, 5, "textii");
       Author avt1 = new Author("saxeli", "gvari", "biograpia", new Date() );
+      Category ctg= new Category("leqsebi");
       
-      
-      at.insertAuthor(avt1);
+     /* at.insertAuthor(avt1);
       at.deleteAuthor(20);
       at.updateAuthor(avt1);
       at.printAllAuthors();
@@ -28,9 +29,15 @@ public class Main {
             //System.out.println("Book updated!");
         booki.deleteBook(15);
        // System.out.println("wigni waishala");
-        booki.printAllBooks();
+       
         
-        
+        */
+     // categ.insertcategory(ctg);
+      at.printAllAuthors();
+      
+      booki.printAllBooks();
+      
+      categ.printAllcategory();
         
     }
 }

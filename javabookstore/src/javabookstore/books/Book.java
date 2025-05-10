@@ -1,7 +1,6 @@
 package javabookstore.books;
 
 
-
 import java.util.Date;
 
 public class Book {

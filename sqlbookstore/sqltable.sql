@@ -54,9 +54,9 @@ create table customers (
 -- orders
 create table orders (
     orderid int primary key identity(1,1),
-    customerid int,
+    empid int,
     orderdate date,
-    orderaddress nvarchar(300),
+    --orderaddress nvarchar(300),
     orderprice decimal(10, 2), 
     foreign key (customerid) references customers(customerid)
 );

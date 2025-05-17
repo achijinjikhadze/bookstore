@@ -28,6 +28,15 @@ create table books (
     foreign key (categoryid) references categories(categoryid)
 );
 
+
+--tanamshromlebi
+create table empl(
+    empid int primary key identity(1,1),
+    firstname nvarchar(100),
+    lastname nvarchar(100),
+    phone nvarchar(30)
+)
+
 -- customers
 create table customers (
     customerid int primary key identity(1,1),

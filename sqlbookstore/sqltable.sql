@@ -28,16 +28,26 @@ create table books (
     foreign key (categoryid) references categories(categoryid)
 );
 
+--tanamdeboba
+create table jobtypes (
+    jobid int primary key identity(1,1),
+    jobtitle nvarchar(100),   
+    salary decimal(10, 2)     
+);
 
 --tanamshromlebi
 create table empl(
     empid int primary key identity(1,1),
     firstname nvarchar(100),
     lastname nvarchar(100),
-    phone nvarchar(30)
+    phone nvarchar(30),
+    jobid int,  
+    foreign key (jobid) references jobtypes(jobid)
+
 )
 
 -- customers
+/*
 create table customers (
     customerid int primary key identity(1,1),
     firstname nvarchar(100),
@@ -48,7 +58,7 @@ create table customers (
     address nvarchar(300),
     registrationdate date,
     role nvarchar(20) default 'user'
-);
+);*/
 
 
 -- orders
@@ -58,7 +68,7 @@ create table orders (
     orderdate date,
     --orderaddress nvarchar(300),
     orderprice decimal(10, 2), 
-    foreign key (customerid) references customers(customerid)
+    foreign key (empid) references empl(empid)
 );
 
 
@@ -76,6 +86,7 @@ create table order_details (
 
 
 -- reviews
+/*
 create table reviews (
     reviewid int primary key identity(1,1),
     customerid int,
@@ -84,4 +95,5 @@ create table reviews (
     foreign key (customerid) references customers(customerid),
     foreign key (bookid) references books(bookid)  
 );
+*/
 

@@ -385,10 +385,14 @@ public class molare {
                 detailStmt.executeBatch();
                 updateStockStmt.executeBatch();
                 con.commit();
-
+                
+              
+                
                 new Alert(Alert.AlertType.INFORMATION, "წარმატებით გაიყიდა.").showAndWait();
                 cart.clear();
                 cartlist.getItems().clear();
+                
+                updateTotalPrice(totallb2);
 
             } catch (SQLException ex) {
                 new Alert(Alert.AlertType.ERROR, "შეცდომა0: " + ex.getMessage()).showAndWait();

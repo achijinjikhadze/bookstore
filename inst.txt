@@ -1,0 +1,27 @@
+C:\Users\User\Desktop\bookstore>git config --global user.name "achi"
+C:\Users\User\Desktop\bookstore>git config --global user.email "archiljinjixadze@gmail.com"
+git config --global --list
+
+git init
+
+git status
+
+git add .
+
+git commit -m".."
+
+git log
+
+git push -u origin master/main
+
+git remote set-url origin https://github.com/achijinjikhadze/bookstore.git
+git remote add origin https://github.com/achijinjikhadze/bookstore.git
+
+
+git remote add origin 
+
+git remote
+git remove -v
+
+git push -u origin master --force
+
